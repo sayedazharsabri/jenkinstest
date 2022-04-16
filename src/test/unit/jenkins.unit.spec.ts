@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
-import { getSuccess } from '../../src/controllers/jenkins';
+import { getSuccess } from '../../controllers/jenkins';
 
 let mockRequest: Partial<Request>;
 let mockResponse: Partial<Response>;
 
 const mockResponseFn = () => {
 
-    const res = { statusCode: 0, responseObject: {}, status() { }, json() { } };
+    const res = { statusCode: 0, responseObject: {}, status() {return res; }, json() {return res; } };
 
     res.status = jest.fn().mockImplementation(code => {
         res.statusCode = code;
